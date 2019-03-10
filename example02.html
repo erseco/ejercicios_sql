@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 2</title>
+
+    <style type="text/css">
+
+        textarea {
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+
+    <!-- We add here the alasql library: http://alasql.org/ -->
+    <script type="text/javascript" src="js/alasql.js"></script>
+
+    <script type="text/javascript">
+
+        function run_sql() {
+
+            sql_text = document.getElementById("sql").value;
+
+            result = alasql(sql_text);
+
+            console.log(result);
+
+            document.getElementById("result").value = JSON.stringify(result);
+
+        }
+
+</script>
+
+
+</head>
+<body>
+    <a href="index.html">Go back</a>
+    <br />
+    <div>
+        <label for="sql">SQL:</label>
+        <textarea id="sql"></textarea>
+        <label for="result">Result:</label>
+        <textarea id="result"></textarea>
+    </div>
+    <button onclick="run_sql();">Run</button>
+    <div id="log"></div>
+    <pre>
+
+    CREATE TABLE people (
+        Id INT PRIMARY KEY,
+        FirstName STRING,
+        LastName STRING
+    );
+
+    INSERT INTO people VALUES
+        (1,"Peter","Peterson"),
+        (2,"Eric","Ericson"),
+        (3,"John","Johnson");
+
+    IF EXISTS (SELECT * FROM people WHERE Id=2)
+        UPDATE people SET FirstName = "Roll", LastName = "Rolson" WHERE Id=2
+    ELSE
+        INSERT INTO people VALUES (2,"Eric","Rollson");
+
+    IF EXISTS (SELECT * FROM people WHERE Id=4)
+        UPDATE people SET FirstName = "Roll", LastName = "Rolson" WHERE Id=4
+    ELSE
+        INSERT INTO people VALUES (4,"Smith","Smithson");
+
+    SELECT * INTO HTML("#log",{headers:true}) FROM people;
+
+
+    </pre>
+
+</body>
+
+</html>

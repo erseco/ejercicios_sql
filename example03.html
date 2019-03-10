@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 3</title>
+
+    <!-- We add here the alasql library: http://alasql.org/ -->
+    <script type="text/javascript" src="js/alasql.js"></script>
+
+    <script type="text/javascript">
+
+    alasql(`
+        CREATE TABLE people (
+            Id INT AUTOINCREMENT PRIMARY KEY,
+            FirstName STRING,
+            LastName STRING
+        );
+    `);
+
+    alasql(`
+
+        INSERT INTO people VALUES
+            (1,"Peter","Peterson"),
+            (2,"Eric","Ericson"),
+            (3,"John","Johnson");
+    `);
+
+    function print_table() {
+
+        alasql("SELECT * INTO HTML('#log',{headers:true}) FROM people;")
+
+    }
+
+    function insert_data() {
+
+        firstname = document.getElementById("firstname").value;
+        lastname = document.getElementById("lastname").value;
+
+        result = alasql("INSERT INTO people (FirstName, LastName) VALUES ('" + firstname + "', '" + lastname + "');");
+
+        console.log(result);
+
+        print_table();
+
+    }
+
+</script>
+
+
+</head>
+<body>
+    <a href="index.html">Go back</a>
+    <br />
+    <br />
+
+    <form>
+        <div>
+            <span>
+                <label>First</label>
+                <input id="firstname" name= "firstname" maxlength="255" size="8" value=""/>
+            </span>
+            <span>
+                <label>Last</label>
+                <input id="lastname" name= "lastname" maxlength="255" size="14" value=""/>
+            </span>
+        </div>
+        <br />
+        <input type="button" name="submit" value="Submit" onclick="insert_data();" />
+        <input type="reset" name="reset" value="Reset" />
+
+    </form>
+
+    <br />
+
+    <div id="log"></div>
+
+</body>
+<script type="text/javascript">
+    // Why we call here the function?
+    print_table();
+</script>
+</html>

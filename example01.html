@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example 1</title>
+    <!-- We add here the alasql library: http://alasql.org/ -->
+    <script type="text/javascript" src="js/alasql.js"></script>
+</head>
+<body>
+<a href="index.html">Go back</a>
+<div id="result"></div>
+</body>
+<script type="text/javascript">
+
+
+    alasql("CREATE TABLE cities (city string, population number)");
+
+    alasql("INSERT INTO cities VALUES ('Rome',2863223),('Paris',2249975),('Berlin',3517424),('Madrid',3041579)");
+
+    var result = alasql("SELECT * FROM cities WHERE population < 3500000 ORDER BY population DESC");
+
+    console.log(result);
+
+    document.getElementById("result").textContent = JSON.stringify(result);
+
+    /*
+    Expected result
+    [
+      {
+        "city": "Madrid",
+        "population": 3041579
+      },
+      {
+        "city": "Rome",
+        "population": 2863223
+      },
+      {
+        "city": "Paris",
+        "population": 2249975
+      }
+    ]
+    */
+
+    // What can we do with this code?
+    // alasql("SELECT * INTO HTML('#result',{headers:true}) FROM cities;")
+
+    // And the next one?
+    // alasql("SELECT * INTO HTML('#result',{headers:true}) FROM cities WHERE population > 3000000 ORDER BY population DESC;")
+
+
+    // Why we put the code at the bottom of the page?
+
+</script>
+
+</html>
