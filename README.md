@@ -2,6 +2,4 @@
 
 This exercises are based on AlaSQL http://alasql.org/
 
-
-
-
+You can check them on: https://erseco.github.io/ejercicios_sql/
