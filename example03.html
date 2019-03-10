@@ -74,14 +74,16 @@
     <div id="log"></div>
 
     <h2>Questions:</h2>
-    <ul>
-        <li>What means <strong>AUTOINCREMENT</strong> in the <strong>Id</strong> field?</li>
-        <li>What is the purpose of the <strong>print_table()</strong> function?</li>
-        <li>This form is vulnerable, do you know why?</li>
-        <li>Enter a new user with the name <strong>Juan</strong> and the lastname <strong>Palomo'); INSERT INTO people VALUES (666, 'hacked', 'hacked</strong>, what happens?
-        <li>Enter a new user with the name <strong>Luis</strong> and the lastname <strong>Candelas'); UPDATE people SET Id = 666, FirstName = 'hacked', LastName = 'hacked</strong>, what happens?
-        <li>Enter a new user with the name <strong>Luis</strong> and the lastname <strong>Candelas'); DROP TABLE people; SELECT 1</strong>, what happens?
-    </ul>
+    <ol>
+        <li>What means <strong>AUTOINCREMENT</strong> in the <strong>Id</strong> field?</li><br />
+        <li>What is the purpose of the <strong>print_table()</strong> function? When it is called?</li><br />
+        <li>What happens if we submit the form with empty fields?</li><br />
+        <li>Enter a new user with the name <strong>Juan</strong> and the lastname <strong><pre>Palomo'); INSERT INTO people VALUES (0, 'hacked', 'hacked</pre></strong> what happens?</li><br />
+        <li>Enter a new user with the name <strong>Luis</strong> and the lastname <strong><pre>Candelas'); UPDATE people SET FirstName = 'hacked', LastName = 'hacked'; SELECT ('1</pre></strong> what happens?</li><br />
+        <li>Enter a new user with the name <strong>King</strong> and the lastname <strong><pre>Africa'); DROP TABLE people; SELECT ('1</pre></strong> what happens?</li>
+        <li>As you see, this form is vulnerable, do you know why?</li><br />
+        <li>How can we solve it? Give some ideas</li><br />
+    </ol>
 
 </body>
 <script type="text/javascript">

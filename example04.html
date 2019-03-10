@@ -30,17 +30,29 @@
 
     }
 
+    function sanitize_string(str) {
+        str = str.replace("\"","");
+        str = str.replace("'","");
+        return str;
+    }
+
     function insert_data() {
 
         firstname = document.getElementById("firstname").value;
         lastname = document.getElementById("lastname").value;
 
-        result = alasql("INSERT INTO people (FirstName, LastName) VALUES ('" + firstname + "', '" + lastname + "');");
-                                                                                                    juan'); INSERT INTO people VALUES (666, 'hacked', 'hacked
+        firstname = sanitize_string(firstname);
+        lastname = sanitize_string(lastname);
 
-        console.log(result);
+        if (firstname != "" && lastname != "") {
 
-        print_table();
+            result = alasql("INSERT INTO people (FirstName, LastName) VALUES ('" + firstname + "', '" + lastname + "');");
+
+            console.log(result);
+
+            print_table();
+
+        }
 
     }
 
@@ -50,18 +62,18 @@
 </head>
 <body>
     <a href="index.html">Go back</a>
-    <br />
+    <h2>Example 4: Solving SQL Injection</h2>
     <br />
 
     <form>
         <div>
             <span>
                 <label>First</label>
-                <input id="firstname" name= "firstname" maxlength="255" size="8" value=""/>
+                <input id="firstname" name= "firstname" maxlength="255" size="8" value="" required="true" />
             </span>
             <span>
                 <label>Last</label>
-                <input id="lastname" name= "lastname" maxlength="255" size="14" value=""/>
+                <input id="lastname" name= "lastname" maxlength="255" size="14" value="" required="true" />
             </span>
         </div>
         <br />
@@ -74,15 +86,44 @@
 
     <div id="log"></div>
 
-
     <h2>Questions:</h2>
-    <ul>
-        <li>What means <strong>AUTOINCREMENT</strong> in the <strong>Id</strong> field?</li>
-        <li>What is the purpose of the <strong>print_table()</strong> function?</li>
-        <li>This form is vulnerable, do you know why?</li>
-        <li>Try to enter a new user with the name <strong>Juan</strong> and the lastname <strong>Palomo'); INSERT INTO people VALUES (666, 'hacked', 'hacked</strong>
+    <ol>
+        <li>What happens if we submit the form with empty fields?</li><br />
+        <li>Enter a new user with the name <strong>Juan</strong> and the lastname <strong><pre>Palomo'); INSERT INTO people VALUES (0, 'hacked', 'hacked</pre></strong> what happens?</li><br />
+        <li>What is the reason of the <strong><pre>if (firstname != "" && lastname != "") {</pre></strong> line?</li><br />
+        <li>What is doing the function <strong>sanitize_string()</strong>?</li><br />
+        <li>This form is less vulnerable, do you know why?</li><br />
+        <li>Can we trust the data received from an user?
+    </ol>
 
-    </ul>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    And for finishing...
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h2>Some jokes about SQL Injection:</h2>
+    <img src="img/bobby-tables.png" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <img src="img/radar.jpg" />
 
 </body>
 <script type="text/javascript">

@@ -6,8 +6,19 @@
     <script type="text/javascript" src="js/alasql.js"></script>
 </head>
 <body>
-<a href="index.html">Go back</a>
-<div id="result"></div>
+    <a href="index.html">Go back</a>
+    <br />
+    <br />
+    <div id="result"></div>
+
+    <h2>Questions:</h2>
+    <ol>
+        <li>Look at the source code, open the JavaScript Debugger and set a breakpoint</li><br />
+        <li>What can we do with this code? <strong><pre>alasql("SELECT * INTO HTML('#result',{headers:true}) FROM cities;")</pre></strong></li><br />
+        <li>And this other? <strong><pre>alasql("SELECT * INTO HTML('#result',{headers:true}) FROM cities WHERE population > 3000000 ORDER BY population DESC;")</pre></strong></li><br />
+        <li>Why we put the javascript code at the bottom of the page?</li><br />
+    </ol>
+
 </body>
 <script type="text/javascript">
 
@@ -45,9 +56,6 @@
 
     // And the next one?
     // alasql("SELECT * INTO HTML('#result',{headers:true}) FROM cities WHERE population > 3000000 ORDER BY population DESC;")
-
-
-    // Why we put the code at the bottom of the page?
 
 </script>
 
